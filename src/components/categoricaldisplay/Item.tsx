@@ -31,7 +31,7 @@ const ItemName = React.memo(({ item: { itemId, display } }: { item: TSubCategory
 const ItemDetail = React.memo(
     ({ favoritesId, item: { dataObject, itemId } }: { favoritesId: string; item: TSubCategoryDataItem }) => (
         <div className='sc-mcd__item__detail'>
-            {dataObject && (dataObject.exchange_is_open === undefined || dataObject.exchange_is_open) ? (
+            {dataObject && (dataObject.market === 'forex' || dataObject.exchange_is_open === undefined || dataObject.exchange_is_open) ? (
                 ''
             ) : (
                 <span className='closed-market'>{t.translate('CLOSED')}</span>

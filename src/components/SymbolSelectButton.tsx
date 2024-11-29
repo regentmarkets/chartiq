@@ -62,12 +62,13 @@ export const SymbolInfo = observer(SymbolInfoBase);
 
 const SymbolSelectButtonBase = () => {
     const { chartTitle } = useStores();
-    const { isSymbolOpen } = chartTitle;
+    const { isSymbolOpen, currentActiveCategory } = chartTitle;
+    const is_forex_market = currentActiveCategory === 'forex';
     return (
         <div className='cq-symbol-select-btn'>
             <div className='cq-symbol-select-btn__container'>
                 <SymbolInfo />
-                {!isSymbolOpen && <div className='cq-symbol-closed-text'>{t.translate('CLOSED')}</div>}
+                {!isSymbolOpen && !is_forex_market && <div className='cq-symbol-closed-text'>{t.translate('CLOSED')}</div>}
             </div>
             <ArrowIcon className='cq-symbol-dropdown' />
         </div>
