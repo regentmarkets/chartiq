@@ -40,7 +40,8 @@ if (process.env.NODE_ENV !== 'production') {
         exclude: [/^RenderInsideChart$/, /^inject-/],
     });
 }
-const trackJSDomains = ['binary.com', 'binary.me'];
+
+const trackJSDomains = ['binary.com', 'binary.me', 'deriv.com'];
 window.isProductionWebsite = trackJSDomains.some(val => window.location.host.endsWith(val));
 
 if (window.isProductionWebsite) {
@@ -49,6 +50,7 @@ if (window.isProductionWebsite) {
     s.src = 'https://cdn.trackjs.com/releases/current/tracker.js';
     document.body.appendChild(s);
 }
+
 /* // PWA support is temporarily removed until its issues can be sorted out
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register(`${window.location.origin + window.location.pathname}sw.js`)
